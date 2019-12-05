@@ -1,0 +1,15 @@
+# zfs_toolbox
+
+ZFS sysadmin toolbox from PSMN HPC center, ENS de Lyon, Lyon.
+
+Mainly scripts in bash and python...
+
+This is a public mirror (carbon-copy), not the main development repository.
+(As keywords don't work with git, commit messages will/may not be relevant...)
+
+Main repo URL: https://sourcesup.renater.fr/psmn-public/
+
+You can still address issues and requests.
+
+
+/* SPDX-License-Identifier: CECILL-B OR BSD-2-Clause */

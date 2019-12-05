@@ -1,0 +1,12 @@
+# $Id: AUTHORS 1075 2019-07-18 14:45:39Z gruiick $
+# SPDX-License-Identifier: BSD-2-Clause
+
+Original author(s) of gZFS bash toolset: 
+Kevin Recherchon
+Sébastien Meï
+Loïs Taulelle
+
+Author(s) of PSMN's python3 zfs toolbox:
+Loïs Taulelle
+
+See CREDITS

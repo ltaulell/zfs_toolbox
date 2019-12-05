@@ -1,0 +1,129 @@
+# $Id: TODO 1075 2019-07-18 14:45:39Z gruiick $
+# SPDX-License-Identifier: BSD-2-Clause
+
+traduire gZFS depuis bash vers python
+
+## REF/DOC:
+
+https://tech.io/playgrounds/500/advanced-python-features
+http://sametmax.com/le-formatage-des-strings-en-long-et-en-large/
+voir gzfs/enable-* et gzfs/disable-*
+https://web.archive.org/web/20180330161419/http://sametmax.com:80/gestion-des-erreurs-en-python/
+https://web.archive.org/web/20180126070608/http://sametmax.com/pourquoi-utiliser-un-mecanisme-dexceptions/
+https://web.archive.org/web/20180322200037/http://sametmax.com:80/log-post-mortem-avec-python/
+
+
+## TODO / Work In Progress (dev/)
+
+    * y'a 'root' en dur dans les zfs_cmd, preférer GLOBAL_CONFIG['user'].
+
+    * vérification écrasement de config (<action>-<volume>.yml) ?
+        * save previous config (.bak)
+
+    * vérif crontab + os.chmod + os.chown ? shutil.chown, stat.S_IMODE...
+
+    * passer un coup de flake8 et pylint3
+
+    * FIXME nom du fichier de log dans la conf générale ? (combined logs?, lock long)
+
+    * FIXME zfs_default en dur dans la config ? problème du serpent qui se mord la queue
+
+    * mbuffer integration with send/recv, as option.
+
+## DONE (both)
+
+    * OK lecture du yaml
+        * OK dictionnaire de config
+    * OK écriture en yaml
+    * écrire la crontab
+        /etc/cron.d/snapshot-baie1-data
+        10 0 * * * root /sbin/zfs-snapshot /opt/gZFS/snapshots/snapshot-baie1-data.yml
+    * demander les horaires (H:M)
+    * OK argparse:
+        * OK mix short/long
+        * OK mix lower/upper
+        * OK groups, mandatory, etc
+        * KO dry-run => récapitulatif final + confirm
+        * OK mutually exclusive
+    * files
+       # https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
+    * OK toolbox standard (verifBinaire, YesNo, etc)
+    * OK dates (create, read)
+    * OK ajouter récapitulatif final (y/n)
+    * OK écriture crontab (fichier simple)
+    * OK restart cron => "systemctl restart cron.service"
+    * OK effacer crontab/conf : os.remove(path)
+    * logs en fonction propre
+        - ABANDON reste à fusionner avec emails
+        - KO logs bruts (voir 24-logs+emails)
+        - KO emails (voir 24-logs+emails)
+    * OK la config par défaut devrait être dans un fichier (plutôt qu'en dur, éclatée dans 3/6 scripts...)
+    * tests avec execo pour process, logs, emails
+        * OK logs stdout (normal ou --debug)
+        * OK logs infile (normal ou --log) (execo, process+log3.py)
+        * OK execo.logger
+        * OK logging.formatter
+    * emails récap ?
+        * OK, by cron, sinon >/dev/null
+        * ABANDON cas normal, demande utilisateur => NON, gérer avec "+/- >/dev/null"
+    * ABANDON basic dictionary, with default values
+    yconfig = {
+           'general': {'debug': 'no', 'log': 'no'},
+           'name': '',
+           'action': 'snapshot',
+           'type': 'filesystem',
+           'retention': '7',
+           }
+    * OK fichier de config par défaut, lecture, global dictionary
+    * OK zfs-snapshot.py devrait ignorer un snapshot qui n'a pas le bon 
+      format (name) dans deleteSnapshot, gérer la cohabitation avec 
+      d'autre(s) snapshot(s)
+    * OK use /usr/bin/env python3
+    * OK ajouter option de config pour les mails (influence sur >/dev/null)
+    * bump version (v0.1) + docstring, after successfull tests
+    * use string = (' '.join(liste)) for the strings building
+    * ajouter exemples dans la doc
+    * --mail devrait gérer aussi une adresse mail (default: root)
+    * replicas locaux
+        * OK le volume cible doit être différent
+    * OK first shot without mbuffer
+    * OK refactor executeProcess (test17)
+        Et pas besoin de se prendre la tête...
+    * (enable-*.py) change *path to ['path']['something'] (conf, tool, cron, log, zfs)
+    * add compatibility verification between tools and configuration
+        enable-*.py add 'version' in conf files,
+        + if config['general']['version'] != __version__:
+    * execute_process(cmd, silent=True)
+    * remplacer les print() par des execo.log
+    * refactoring :
+        * zfs_actions.py remplace zfs-snapshot et zfs-replica
+        * manage_conf.py remplace enable-* et disable-*
+        * snake_case PARTOUT !!
+        * 1 module pour toutes les fonctions : zfs_common.py
+        => seulement 3 scripts .py et 1 fichier de conf .yml
+        * refactor delete_snapshot() avec get_local_snapshot()
+    * utiliser le fichier de conf par défaut
+        if not gconfig['path']['zfs'] or gconfig['path']['zfs'] == '':
+            verif_exec(zfs)
+    * en mode 'complete' = propager toutes les propriétés zfs ? (send -R ou -p)
+    * deal with error (and send email, test12 & test18) doc sys.exit()
+        https://docs.python.org/3.7/library/atexit.html
+        pas vraiment nécessaire, avec simplement >/dev/null, on garde la stacktrace
+    * cohérence du refactoring (une seule façon de faire une même chose, ex: ''.join())
+        * ''.join([]) et/ou '{conf}{monfichier}.yml'.format(**GLOBAL_CONFIG['path'])
+    * ajouter/proposer gestion de logrotate dans la doc.
+        trop périlleux avec manage_conf.py (quand/comment nettoyer ?)
+    * script python pour translater les config existantes (v0.3/0.4 -> 0.5)
+        * lire fichier correspondant à <volume name>
+        * sauve previous config (.bak)
+        * contruire dict au format 0.5
+        * écraser ancienne config
+
+## Errors vade-mecum
+
+- cannot open '$target': dataset does not exist : *expected*
+  -> do a full replication
+- cannot receive incremental stream: destination data/toto has been modified since most recent snapshot
+  -> rendre la main
+- ssh: Could not resolve hostname $host: Name or service not known
+  -> rendre la main

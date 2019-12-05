@@ -1,0 +1,72 @@
+
+## dev (r1075+, ongoing development)
+
+See TODO, readme-dev.fr.md
+
+## v0.5 (svn r1057, r1075, r1115)
+
+    Code refactoring:
+        one script to manage all confs (manage_conf.py)
+        one script do performe action (zfs_actions.py)
+        one module (zfs_common.py)
+    v0.5 YAML default configuration and volume's configurations are incompatible
+    with previous versions.
+    A helper script can perform translation to new v0.5 options:
+        (update_to_v0.5.py)
+    Some sed oneliners are also provided for heavely diverging configs:
+        (search_and_replace.sed)
+    Updated README.md to v0.5
+    #0002310@sourcesup: local replica => stderr, distant replica => stdout...
+        merge stderr and stdout, refactor execute_zfs() (zfs_common.py)
+
+## v0.4 (svn r941, r950)
+
+    #0001938@sourcesup: zfs-replica does use nolog=True, if target dataset may 
+        not exist hence, no WARNING in logs,
+    add kwarg first=True/False on get_dist_snap (refactor),
+
+
+## v0.3 (svn r934, r935, r939)
+
+    *.py, *.yml bumped version to 0.3
+    light refactoring in zfs-replica.py,
+    enable-*.py add 'version' in conf files,
+    version check added everywhere,
+    documentation updated,
+    #0001831@sourcesup: if target dataset does not exist, do a full replication 
+        without WARNING.
+
+WARNING! v0.3 scripts and configurations are NOT compatible with v0.2.
+
+
+## v0.2 (svn r916, r918, r921)
+
+    enable-replica.py, disable-replica.py and zfs-replica.py are usable,
+  
+    zfs-defaults.yml contain default configuration for both snapshot and 
+    replica scripts. New config keys:
+        path:
+            snapshot
+            replica
+            conf
+            log
+            cron
+            zfs: ''
+
+        enable-snapshot.py, disable-snapshot.py and zfs-snapshot.py modified
+        accordingly,
+
+    zfs-conf-example.yml contain both examples for snapshot and replica 
+    configurations,
+    
+    enable-*.py and disable-*.py have now a version check.
+
+WARNING! v0.2 scripts and configurations are NOT compatible with v0.1.
+
+
+## v0.1 (svn r837, r859)
+
+    enable-snapshot.py, disable-snapshot.py and zfs-snapshot.py are usable,
+    zfs-defaults.yml contain default configuration for python scripts,
+    zfs-conf-example.yml contain one example of snapshot configuration,
+    #0001749@sourcesup: dataset may contain a '-'.

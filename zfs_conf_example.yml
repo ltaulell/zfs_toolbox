@@ -1,0 +1,21 @@
+# $Id: zfs_conf_example.yml 1075 2019-07-18 14:45:39Z gruiick $
+# SPDX-License-Identifier: BSD-2-Clause
+%YAML 1.1
+---
+# common options:
+general:
+  log: 'yes'
+  logfile: '/var/log/zfs_actions.log'
+  debug: 'yes'
+  version: '0.5'
+retention: '7'
+# actual zfs volume
+volume: 'baie1/data/photochim'
+# snapshot/replica
+action: 'snapshot'
+# if replica, moar options:
+replica:
+  type: 'complete'  # complete or simple/None
+  archive: 'oldest'  # oldest or latest/None
+  targetpool: 'backup'  # target poolname or None
+  server: ''  # if None server=localhost

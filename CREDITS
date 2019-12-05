@@ -1,0 +1,12 @@
+# $Id: CREDITS 1116 2019-09-06 08:46:29Z gruiick $
+# SPDX-License-Identifier: BSD-2-Clause
+
+Credits for PSMN's python3 zfs toolbox:
+Kevin Recherchon (original bash toolset)
+Sébastien Meï (original bash toolset)
+Simon Delamare (execo/logging tips)
+Matthieu Imbert (execo)
+Laurent Pouilloux (execo)
+Micael Calvas (tests, documentation)
+Mickaël Schoentgen (Tiger-222 @indexerror.net, tips)
+Julien Palard (mdk@ #python-fr.freenode, tips)
