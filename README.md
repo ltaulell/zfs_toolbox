@@ -1,4 +1,4 @@
- $Id: README.md 1121 2019-09-12 15:05:33Z gruiick $
+ $Id: README.md 1185 2019-12-13 12:58:58Z gruiick $
  SPDX-License-Identifier: BSD-2-Clause
 
 # PSMN ZFS toolbox
@@ -24,6 +24,7 @@ This is Work In Progress:
 
 ## Default directories and files (dev)
 
+```
 /root
 ├── conf
 │   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
@@ -33,7 +34,7 @@ This is Work In Progress:
     ├── manage_conf.py
     ├── zfs_actions.py              (need exec bit)
     └── zfs_common.py
-
+```
 
 ## default configuration file (zfs_defaults.yml, dev)
 
@@ -70,6 +71,8 @@ execo >= 2.6.2
 PyYAML >= 5.1.2
 
 ``python3 -m pip install execo PyYAML``
+
+Obviously zfs, and ssh, if you do replicas.
 
 ## Create configuration files
 
@@ -184,6 +187,8 @@ cron service.
 Be aware that zfs_actions.py destroy replica(s) on a daily basis, hence all 
 replicas created the same day, will be erased **replica day + retention**
 days later.
+
+Please refer to ssh manual to create a ssh key pair (without passphrase).
 
 example: `python3 manage_conf.py disable --replica data/volume`
 
