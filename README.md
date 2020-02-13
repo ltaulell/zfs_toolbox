@@ -15,21 +15,24 @@ python3 scripts.
 It use ``execo`` python3 module (python3 -m pip install execo) from INRIA.
 
 This is Work In Progress:
+
+```
     v0.1 tested (svn r837 - r859)
     v0.2 tested (svn r916 - r921)
     v0.3 tested (svn r935 - r936)
     v0.4 tested (svn r946 - r950)
     v0.5 tested (svn r1057 - r1115)
     dev (future v0.6)
+```
 
 ## Default directories and files (dev)
 
 ```
 /root
 ├── conf
-│   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
-│   ├── replica-data-example.yml    (see zfs_conf_example.yml)
-│   └── zfs_defaults.yml
+│   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
+│   ├── replica-data-example.yml    (see zfs_conf_example.yml)
+│   └── zfs_defaults.yml
 └── tools
     ├── manage_conf.py
     ├── zfs_actions.py              (need exec bit)
@@ -66,9 +69,9 @@ configuration.
 
 ## Requirements
 
-Python >= 3.5 with standard installation (as in most distribution's packages)
-execo >= 2.6.2
-PyYAML >= 5.1.2
+Python >= 3.5 with standard installation (as in most distribution's packages)  
+execo >= 2.6.2  
+PyYAML >= 5.1.2  
 
 ``python3 -m pip install execo PyYAML``
 
