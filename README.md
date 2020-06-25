@@ -6,6 +6,8 @@
 PSMN's python3 zfs toolbox is a rewrite of a unmaintenable set of 
 bash scripts (gZFS).
 
+[PSMN](http://www.ens-lyon.fr/PSMN/) is "Pôle Scientifique de Modélisation Numérique", the Computing Center and "MesoCentre" of [École Normale Supérieure de Lyon](http://www.ens-lyon.fr/en/).
+
 ## TL;DR
 
 The idea is to have automated rolling snapshots (and replicas) in a time 
