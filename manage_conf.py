@@ -106,7 +106,7 @@ For a replica, there are more optional <args>:
         enable_parser.add_argument('-r', '--retention', nargs=1, type=int,
                                    help='retention, in day(s) [default: 7]')
         enable_parser.add_argument('--mail', action='store', nargs='?',
-                                   type=str, const='root', help='let cron send '
+                                   type=str, help='let cron send '
                                    'an email each snapshot (default: no, '
                                    '[default: root])')
         # <crontab> options
