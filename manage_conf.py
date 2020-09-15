@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-# $Id: manage_conf.py 1075 2019-07-18 14:45:39Z gruiick $
+# $Id: manage_conf.py 1397 2020-09-15 14:06:05Z gruiick $
 # SPDX-License-Identifier: BSD-2-Clause
 
 """
@@ -106,7 +106,7 @@ For a replica, there are more optional <args>:
         enable_parser.add_argument('-r', '--retention', nargs=1, type=int,
                                    help='retention, in day(s) [default: 7]')
         enable_parser.add_argument('--mail', action='store', nargs='?',
-                                   type=str, help='let cron send '
+                                   type=str, const='root', help='let cron send '
                                    'an email each snapshot (default: no, '
                                    '[default: root])')
         # <crontab> options
@@ -326,7 +326,7 @@ def prepare_and_save_crontab():
     else:
         cronlist = (minute, hour, dom, month, dow, GLOBAL_CONFIG['user'],
                     binpy, '-c', ymlconf)
-        mailto = 'MAILTO=' + str(script.arguments['mail'][0])
+        mailto = 'MAILTO=' + str(script.arguments['mail'])
 
     crontab = (' '.join(cronlist))
     cronfichier = ''.join([GLOBAL_CONFIG['path']['cron'],
