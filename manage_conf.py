@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-# $Id: manage_conf.py 1397 2020-09-15 14:06:05Z gruiick $
+# $Id: manage_conf.py 1398 2020-09-15 14:27:54Z gruiick $
 # SPDX-License-Identifier: BSD-2-Clause
 
 """
@@ -50,13 +50,19 @@ class ParseArgs(object):
         """ select according to first positional (act as mutually_exclusive_group) """
         self.arguments = {}
         parser = argparse.ArgumentParser(description='', usage='''
-  %(prog)s {command} {type} [<crontab options> <args>] <volume>
+  %(prog)s {command} {type} <volume> [<crontab options> <args>]
 
 Enable or disable a configuration for automated snapshots or replicas.
+
+Where {command} is:
+  enable                enable a new configuration and activate it
+  disable               or disable (and erase) an existing configuration
 
 Where {type} is:
   --snapshot            manage configuration file for snapshot(s) on <volume>
   --replica             or manage configuration file for replica(s) of <volume>
+
+<volume>                mandatory zfs volume name
 
 <crontab options> are:
   -H, --hour            Hour parameter (mandatory for enable)
@@ -82,8 +88,6 @@ For a replica, there are more optional <args>:
 
   --latest              replica archive: only latest snapshot [default]
   --oldest              or complete set of snapshots
-
-<volume>                mandatory zfs volume name
 
 ''')
         parser.add_argument('command', help='enable or disable')

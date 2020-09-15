@@ -1,12 +1,10 @@
- $Id: README.md 1185 2019-12-13 12:58:58Z gruiick $
+ $Id: README.md 1398 2020-09-15 14:27:54Z gruiick $
  SPDX-License-Identifier: BSD-2-Clause
 
 # PSMN ZFS toolbox
 
 PSMN's python3 zfs toolbox is a rewrite of a unmaintenable set of 
 bash scripts (gZFS).
-
-[PSMN](http://www.ens-lyon.fr/PSMN/) is "Pôle Scientifique de Modélisation Numérique", the Computing Center and "MesoCentre" of [École Normale Supérieure de Lyon](http://www.ens-lyon.fr/en/).
 
 ## TL;DR
 
@@ -17,24 +15,21 @@ python3 scripts.
 It use ``execo`` python3 module (python3 -m pip install execo) from INRIA.
 
 This is Work In Progress:
-
-```
     v0.1 tested (svn r837 - r859)
     v0.2 tested (svn r916 - r921)
     v0.3 tested (svn r935 - r936)
     v0.4 tested (svn r946 - r950)
-    v0.5 tested (svn r1057 - r1115)
+    v0.5 tested (svn r1057 - r1397)
     dev (future v0.6)
-```
 
 ## Default directories and files (dev)
 
 ```
 /root
 ├── conf
-│   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
-│   ├── replica-data-example.yml    (see zfs_conf_example.yml)
-│   └── zfs_defaults.yml
+│   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
+│   ├── replica-data-example.yml    (see zfs_conf_example.yml)
+│   └── zfs_defaults.yml
 └── tools
     ├── manage_conf.py
     ├── zfs_actions.py              (need exec bit)
@@ -66,14 +61,13 @@ path:
   zfs: ""
 ```
 
-If you adapt to your needs, be sure to test python scripts which use your
-configuration.
+Be sure to modify the **CONFIGFILE** global variable in ``manage_conf.py`` and ``zfs_actions.py``, so that both scripts can read this configuration file.
 
 ## Requirements
 
-Python >= 3.5 with standard installation (as in most distribution's packages)  
-execo >= 2.6.2  
-PyYAML >= 5.1.2  
+Python >= 3.5 with standard installation (as in most distribution's packages)
+execo >= 2.6.2
+PyYAML >= 5.1.2
 
 ``python3 -m pip install execo PyYAML``
 
@@ -93,13 +87,19 @@ is needed: `manage_conf.py` helps create it.
 
 ```
 usage:
-  manage_conf.py {command} {type} [<crontab options> <args>] <volume>
+  manage_conf.py {command} {type} <volume> [<crontab options> <args>]
 
 Enable or disable a configuration for automated snapshots or replicas.
 
+Where {command} is:
+  enable                enable a new configuration and activate it
+  disable               or disable (and erase) an existing configuration
+
 Where {type} is:
-  --snapshot            manage configuration file for snapshot(s) on <volume>
-  --replica             or manage configuration file for replica(s) of <volume>
+  --snapshot            configuration for snapshot(s) on <volume>
+  --replica             or configuration for replica(s) of <volume>
+
+<volume>                mandatory zfs volume name
 
 <crontab options> are:
   -H, --hour            Hour parameter (mandatory for enable)
@@ -125,8 +125,6 @@ For a replica, there are more optional <args>:
 
   --latest              replica archive: only latest snapshot [default]
   --oldest              or complete set of snapshots
-
-<volume>                mandatory zfs volume name
 
 positional arguments:
   command     enable or disable
