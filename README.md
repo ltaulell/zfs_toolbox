@@ -15,12 +15,12 @@ python3 scripts.
 It use ``execo`` python3 module (python3 -m pip install execo) from INRIA.
 
 This is Work In Progress:
-    v0.1 tested (svn r837 - r859)
-    v0.2 tested (svn r916 - r921)
-    v0.3 tested (svn r935 - r936)
-    v0.4 tested (svn r946 - r950)
-    v0.5 tested (svn r1057 - r1397)
-    dev (future v0.6)
+ * v0.1 tested (svn r837 - r859)
+ * v0.2 tested (svn r916 - r921)
+ * v0.3 tested (svn r935 - r936)
+ * v0.4 tested (svn r946 - r950)
+ * v0.5 tested (svn r1057 - r1397)
+ * current dev (future v0.6)
 
 ## Default directories and files (dev)
 
@@ -35,6 +35,8 @@ This is Work In Progress:
     ├── zfs_actions.py              (need exec bit)
     └── zfs_common.py
 ```
+
+Of course, you may adapt it at your own needs, see below.
 
 ## default configuration file (zfs_defaults.yml, dev)
 
@@ -71,7 +73,7 @@ PyYAML >= 5.1.2
 
 ``python3 -m pip install execo PyYAML``
 
-Obviously zfs, and ssh, if you do replicas.
+Obviously zfs, and ssh, if you do external replicas.
 
 ## Create configuration files
 
