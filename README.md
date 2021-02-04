@@ -22,18 +22,19 @@ This is Work In Progress:
  * v0.5 tested (svn r1057 - r1397)
  * current dev (future v0.6)
 
-## Default directories and files (dev)
+## Default directories and files (0.5 and dev)
 
 ```
 /root
-├── conf
-│   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
-│   ├── replica-data-example.yml    (see zfs_conf_example.yml)
-│   └── zfs_defaults.yml
-└── tools
+└── zfstoolbox
+    ├── conf
+    │   ├── replica-data-example.yml    (see zfs_conf_example.yml)
+    │   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
+    │   └── zfs_defaults.yml
     ├── manage_conf.py
-    ├── zfs_actions.py              (need exec bit)
+    ├── zfs_actions.py                  (need exec bit)
     └── zfs_common.py
+
 ```
 
 Of course, you may adapt it at your own needs, see below.
