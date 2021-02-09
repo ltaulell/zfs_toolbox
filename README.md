@@ -280,3 +280,16 @@ This example keep one year of logs, rotated monthly.
 Debug might be extremely verbose. We advise to not debug AND log 
 automaticaly for a long period of time.
 
+  * bump version (prior to v0.4) to 0.4
+
+``` bash
+grep version conf/*.yml
+sed -i '/version/ s/0.2/0.4/' conf/*.yml
+```
+
+  * bump version (prior to 0.3) to 0.5
+
+``` bash
+update_to_v0.5.py -f path/to/file.yml
+```
+
