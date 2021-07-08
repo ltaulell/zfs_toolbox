@@ -1,4 +1,4 @@
- $Id: README.md 1398 2020-09-15 14:27:54Z gruiick $
+ $Id: README.md 1398 2021-07-08 10:47:54Z ltaulell $
  SPDX-License-Identifier: BSD-2-Clause
 
 # PSMN ZFS toolbox
@@ -68,9 +68,11 @@ Be sure to modify the **CONFIGFILE** global variable in ``manage_conf.py`` and `
 
 ## Requirements
 
+```
 Python >= 3.5 with standard installation (as in most distribution's packages)
 execo >= 2.6.2
 PyYAML >= 5.1.2
+```
 
 ``python3 -m pip install execo PyYAML``
 
@@ -136,20 +138,21 @@ optional arguments:
   -h, --help  show this help message and exit
 
 ```
+#### enabling/disabling snapshots
 
-example: `python3 manage_conf.py enable --snapshot data/volume -H 1 -m 0`
+**example**: `python3 manage_conf.py enable --snapshot data/volume -H 1 -m 0`
 
 Will create a configuration yaml file, to do a snapshot at 01:00 everyday, 
 for zfs dataset 'data/volume', with a retention of 7 days, without log, 
 debug and recapitulative mail. Will also create the corresponding crontab, 
 and can activate it by restarting cron service.
 
-example: `python3 manage_conf.py enable --snapshot --log -r 15 -H 22 -m 15 -DW 0 data/volume`
+**example**: `python3 manage_conf.py enable --snapshot --log -r 15 -H 22 -m 15 -DW 0 data/volume --mail`
 
 Will create a configuration yaml file, to do a snapshot at 22:15 every Sunday, 
 for zfs dataset 'data/volume', with a retention of 15 days, with log, without 
-debug and recapitulative mail. Will also create the corresponding crontab, 
-and can activate it by restarting cron service.
+debug, but with recapitulative mail (to system default, usualy root). Will also 
+create the corresponding crontab, and can activate it by restarting cron service.
 
 If you need to run snapshot more than one by day, you should create a simple
 crontab file, then modify it to your needs (man crontab), then restart 
@@ -163,13 +166,15 @@ It might be necessary for the firsts runs to activate the mail option.
 After some successfull tests, you can add `>/dev/null` manually in the 
 crontab.
 
-example: `python3 manage_conf.py disable --snapshot data/volume`
+**example**: `python3 manage_conf.py disable --snapshot data/volume`
 
 Will erase crontab and configuration file for zfs volume 'data/volume', then
 restart cron service, and propose to erase existing YAML configuration file. 
 Remaining snapshot(s) will have to be destroy manually.
 
-example: `python3 manage_conf.py enable --replica data/volume -t backup -H 1 -m 0`
+#### enabling/disabling replicas
+
+**example**: `python3 manage_conf.py enable --replica data/volume -t backup -H 1 -m 0`
 
 Will create a configuration yaml file, to do a replica at 01:00 everyday, 
 of zfs dataset 'data/volume', to zfs dataset 'backup/volume' with a 
@@ -178,7 +183,7 @@ retention of 7 days, without log, debug and recapitulative mail, on
 Will also create the corresponding crontab, and can activate it by 
 restarting cron service.
 
-example: `python3 manage_conf.py enable --replica --log -s server2 -r 15 data/volume -H 23 -m 15 -DW 0`
+**example**: `python3 manage_conf.py enable --replica --log -s server2 -r 15 data/volume -H 23 -m 15 -DW 0`
 
 Will create a configuration yaml file, to do a replica at 23:15 every Sunday, 
 for zfs dataset 'data/volume', with a retention of 15 days, with log, without 
@@ -196,7 +201,7 @@ days later.
 
 Please refer to ssh manual to create a ssh key pair (without passphrase).
 
-example: `python3 manage_conf.py disable --replica data/volume`
+**example**: `python3 manage_conf.py disable --replica data/volume`
 
 Will erase crontab and configuration file of replica for zfs dataset 'data/volume',
 then restart cron service. Remaining replica(s), snapshot(s) and dataset, will
@@ -223,7 +228,7 @@ optional arguments:
   -d, --debug           toggle debug (default: no)
 ```
 
-example: `zfs_actions.py -c /root/conf/snapshot-data-volume.yml`
+**example**: `zfs_actions.py -c /root/conf/snapshot-data-volume.yml`
 
 Will create/destroy snapshots for zfs dataset 'data/volume', according to
 configuration.
@@ -232,7 +237,7 @@ Be aware that zfs_actions.py erase snapshot on a daily basis, hence all
 snapshots created the same day, will be erased **snapshots day + retention**
 days later.
 
-example: `zfs_actions.py -c /root/conf/replica-data-volume.yml`
+**example**: `zfs_actions.py -c /root/conf/replica-data-volume.yml`
 
 Will create/destroy replicas for zfs dataset 'data/volume', according to
 configuration.
