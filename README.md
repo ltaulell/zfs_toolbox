@@ -22,6 +22,10 @@ This is Work In Progress:
  * v0.5 tested (svn r1057 - r1397)
  * current dev (future v0.6)
 
+Successfully tested on Debian 9, Debian 10 and Debian 11.
+
+In active production at PSMN and UMPA lab.
+
 ## Default directories and files (0.5 and dev)
 
 ```
