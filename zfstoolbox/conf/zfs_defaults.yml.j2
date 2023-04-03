@@ -9,10 +9,10 @@ date: ''
 version: '0.5'
 path:
   # main tools location
-  tools: '/root/zfstoolbox/zfs_actions.py'
+  tools: '{{ zfstoolbox_pwd }}/zfs_actions.py'
   # path to config dir (trailing / is mandatory)
   # and home of zfs_defaults.yml (egg or chicken?)
-  conf: '/root/zfstoolbox/conf/'
+  conf: '{{ zfstoolbox_pwd }}/conf/'
   # path to crontab dir (trailing / is mandatory)
   cron: '/etc/cron.d/'
   # path to log dir (trailing / is mandatory)
