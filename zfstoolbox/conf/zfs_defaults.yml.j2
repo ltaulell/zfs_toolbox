@@ -1,0 +1,21 @@
+# $Id: zfs_defaults.yml 1066 2019-07-10 09:37:40Z gruiick $
+# SPDX-License-Identifier: BSD-2-Clause
+%YAML 1.1
+---
+# crontab/ssh user
+user: 'root'
+# will be use for crontab creation date (empty)
+date: ''
+version: '0.5'
+path:
+  # main tools location
+  tools: '{{ zfstoolbox_pwd }}/zfs_actions.py'
+  # path to config dir (trailing / is mandatory)
+  # and home of zfs_defaults.yml (egg or chicken?)
+  conf: '{{ zfstoolbox_pwd }}/conf/'
+  # path to crontab dir (trailing / is mandatory)
+  cron: '/etc/cron.d/'
+  # path to log dir (trailing / is mandatory)
+  log: '/var/log/'
+  # path for zfs binary (if not autodetected)
+  zfs: ''
