@@ -1,0 +1,52 @@
+---
+- name: default zfstoolbox installation paths
+  set_fact:
+    zfstoolbox_pwd: /root/zfstoolbox
+    ztb_base_tpl: /your/path/to/ansible/templates/
+
+- name: Perform base packages install
+  apt:
+    name:
+      - python3-pip
+      - python3-yaml
+    state: present
+
+- name: Install execo python package
+  ansible.builtin.pip:
+    name: execo
+
+- name: Create zfstoolbox directory
+  file:
+    path: "{{ zfstoolbox_pwd }}"
+    owner: root
+    group: root
+    mode: '755'
+    state: directory
+
+- name: Create zfstoolbox config directory
+  file:
+    path: "{{ zfstoolbox_pwd }}/conf"
+    owner: root
+    group: root
+    mode: '755'
+    state: directory
+
+- name: Deploy application files from templates
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: "{{ item.mode }}"
+  with_items:
+    - { src: '{{ ztb_base_tpl }}/manage_conf.py.j2', dest: '{{ zfstoolbox_pwd }}/manage_conf.py', mode: '644' }
+    - { src: '{{ ztb_base_tpl }}/zfs_common.py.j2', dest: '{{ zfstoolbox_pwd }}/zfs_common.py', mode: '644' }
+    - { src: '{{ ztb_base_tpl }}/zfs_actions.py.j2', dest: '{{ zfstoolbox_pwd }}/zfs_actions.py', mode: '755' }
+
+- name: Deploy default config file from template
+  template:
+    src: '{{ ztb_base_tpl }}/zfs_defaults.yml.j2'
+    dest: "{{ zfstoolbox_pwd }}/conf/zfs_defaults.yml"
+    owner: root
+    group: root
+    mode: '644'

@@ -291,7 +291,7 @@ automaticaly for a long period of time.
 
   * ansible
 
-An ansible task is available, with templates. See `zfstoolbox.yml`.
+An ansible task, with templates, is available. See `ansible` directory.
 
 
   * bump version (prior to v0.4) to 0.4
