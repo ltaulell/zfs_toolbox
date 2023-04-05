@@ -289,6 +289,11 @@ This example keep one year of logs, rotated monthly.
 Debug might be extremely verbose. We advise to not debug AND log 
 automaticaly for a long period of time.
 
+  * ansible
+
+An ansible task is available, with templates. See `zfstoolbox.yml`.
+
+
   * bump version (prior to v0.4) to 0.4
 
 ``` bash
