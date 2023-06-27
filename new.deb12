@@ -20,3 +20,19 @@ python3 -m pip install execo yaml
 
 cd zfstoolbox/ && source bin/activate && $USUAL
 
+TODO zfs_defaults.yml
++ version = 0.6
++ dict{} path:tools == only path
++ dict{} path:cmd == only cmd (zfs_actions.py)
++ dict{} path:venv == only path (same as tools by default?)
+
+TODO manage_conf.py (apply changes)
++ version = 0.6
++ l:324 # deb12: introduce venv
+? GLOBAL_CONFIG['path']['tools']
+
+TODO zfs_actions.py (apply changes)
++ version = 0.6
+
+TODO zfs_conf_example.yml (apply changes)
++ version = 0.6

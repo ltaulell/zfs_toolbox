@@ -322,7 +322,7 @@ def prepare_and_save_crontab():
 
     # save crontab
     # deb12: introduce venv
-    binpy = GLOBAL_CONFIG['path']['tools']
+    binpy = ''.join(GLOBAL_CONFIG['path']['tools'],GLOBAL_CONFIG['path']['cmd'])
     ymlconf = GLOBAL_CONFIG['path']['tosave']
     if not script.arguments['mail']:
         cronlist = (minute, hour, dom, month, dow, GLOBAL_CONFIG['user'],

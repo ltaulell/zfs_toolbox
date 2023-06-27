@@ -1,7 +1,19 @@
 
-## dev (r1075+, ongoing development)
+## dev (ongoing development)
 
 See TODO, readme-dev.fr.md
+
+See existing branches
+
+## v0.6
+
+    Debian 12 is switching to full venv for unpackaged python3 tools:
+        new YAML default configuration
+        no changes on volume's configurations
+
+## v0.5b (no tag)
+
+    add ansible task
 
 ## v0.5 (svn r1057, r1075, r1115)
 
