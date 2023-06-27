@@ -7,13 +7,10 @@
 - name: Perform base packages install
   apt:
     name:
+---      - python3-venv
       - python3-pip
       - python3-yaml
     state: present
-
-- name: Install execo python package
-  ansible.builtin.pip:
-    name: execo
 
 - name: Create zfstoolbox directory
   file:
@@ -30,6 +27,11 @@
     group: root
     mode: '755'
     state: directory
+
+--- TODO deploy in venv
+- name: Install execo python package
+  ansible.builtin.pip:
+    name: execo
 
 - name: Deploy application files from templates
   template:

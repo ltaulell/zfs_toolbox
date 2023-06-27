@@ -24,6 +24,8 @@ This is Work In Progress:
 
 Successfully tested on Debian 9, Debian 10 and Debian 11.
 
+FIXME: new changes incoming for Debian 12 support.
+
 In active production at PSMN and UMPA lab.
 
 ## Default directories and files (0.5 and dev)
