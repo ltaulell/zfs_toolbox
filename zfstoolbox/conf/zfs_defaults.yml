@@ -8,7 +8,7 @@ user: 'root'
 date: ''
 version: '0.6'
 path:
-  # main tools location
+  # main tools location (trailing / is mandatory)
   tools: '/tmp/tools/'
   # main script
   cmd: 'zfs_actions.py'

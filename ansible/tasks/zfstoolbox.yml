@@ -7,7 +7,7 @@
 - name: Perform base packages install
   apt:
     name:
----      - python3-venv
+      - python3-venv
       - python3-pip
       - python3-yaml
     state: present
@@ -28,10 +28,13 @@
     mode: '755'
     state: directory
 
---- TODO deploy in venv
-- name: Install execo python package
+- name: Create Python virtual env and Install execo python package
   ansible.builtin.pip:
     name: execo
+--- requirements: /path/to/requirements.txt
+    virtualenv: "{{ zfstoolbox_pwd }}"
+    virtualenv_command: virtualenv
+    virtualenv_site_packages: yes
 
 - name: Deploy application files from templates
   template:

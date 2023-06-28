@@ -87,7 +87,7 @@ Obviously zfs, and ssh, if you do external replicas.
 
 ## VirtualEnv
 
-As of Debian 12 'Bookworm', you need a virtual python environment.
+As of Debian 12 'Bookworm', you need a virtual python environment:
 
 ### Maximum Debian
 
@@ -109,7 +109,7 @@ python3 -m pip install execo PyYAML
 
 ### Entering your virtual env
 
-copy files show in example below, in the newly created hierarchy, with correct chmod.
+Copy files shown in example above, in the newly created hierarchy, with correct chmod.
 
 Then enter your virtualenv, ``cd zfstoolbox/ && source bin/activate``, and start to work.
 
