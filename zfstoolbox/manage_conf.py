@@ -29,7 +29,7 @@ import execo
 
 import zfs_common
 
-__version__ = "0.5"
+__version__ = "0.6"
 __author__ = "See AUTHORS"
 __copyright__ = "Copyright 2018, PSMN, ENS de Lyon"
 __credits__ = "See CREDITS"
@@ -39,7 +39,7 @@ __email__ = "None"
 __status__ = "Production"
 
 # global configuration file
-CONFIGFILE = '/root/conf/zfs_defaults.yml'
+CONFIGFILE = '/root/zfstoolbox/conf/zfs_defaults.yml'
 # CONFIGFILE = 'zfs_defaults.yml'  # tests only
 
 
@@ -322,10 +322,10 @@ def prepare_and_save_crontab():
 
     # save crontab
     # deb12: introduce venv
-    venv = 'cd GLOBAL_CONFIG['path']['tools'] && source bin/activate &&'
-    binpy = ''.join(GLOBAL_CONFIG['path']['tools'],GLOBAL_CONFIG['path']['cmd'])
+    venv = ' '.join(['cd', GLOBAL_CONFIG['path']['tools'], '&& source bin/activate &&'])
+    binpy = ''.join([GLOBAL_CONFIG['path']['tools'],GLOBAL_CONFIG['path']['cmd']])
     ymlconf = GLOBAL_CONFIG['path']['tosave']
-    global_cmd = ' '.join('(', venv, binpy, '-c', ymlconf, ')')
+    global_cmd = ' '.join(['(', venv, binpy, '-c', ymlconf, ')'])
 
     if not script.arguments['mail']:
         cronlist = (minute, hour, dom, month, dow, GLOBAL_CONFIG['user'],
@@ -345,7 +345,7 @@ def prepare_and_save_crontab():
     verifcron = zfs_common.query_yesno(question)
     if verifcron == 1:
         defaultpath = 'PATH=/sbin:/bin:/usr/sbin:/usr/bin'
-        fichier = ['# ' + GLOBAL_CONFIG['date'], GLOBAL_CONFIG['defaultshell'],
+        fichier = ['# ' + GLOBAL_CONFIG['date'], GLOBAL_CONFIG['path']['defaultshell'],
                    mailto, defaultpath, crontab, '']
         zfs_common.verify_or_create_dir(cronfichier)
         zfs_common.save_crontab(cronfichier, fichier)

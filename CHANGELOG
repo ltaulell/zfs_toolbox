@@ -11,9 +11,10 @@ See existing branches
         new YAML default configuration
             tools path and cmd are separated
             new defaultshell, for crontab
-        no change on volume's configurations
+        manage_conf.py modified accordingly
+        'version/__version__' changes in every file, including volume's configurations
 
-## v0.5b (no tag)
+## v0.5b (full git, no more subversion, no tag)
 
     add ansible task
 

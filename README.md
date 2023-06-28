@@ -20,15 +20,14 @@ This is Work In Progress:
  * v0.3 tested (svn r935 - r936)
  * v0.4 tested (svn r946 - r950)
  * v0.5 tested (svn r1057 - r1397)
- * current dev (future v0.6)
+ * v0.6 tested (full git)
+ * current dev
 
-Successfully tested on Debian 9, Debian 10 and Debian 11.
-
-FIXME/TODO: new changes incoming for Debian 12 support.
+Successfully tested from Debian 9 to Debian 12.
 
 In active production at PSMN and UMPA lab.
 
-## Default directories and files (0.5 and dev)
+## Default directories and files (example)
 
 ```
 /root
@@ -45,29 +44,33 @@ In active production at PSMN and UMPA lab.
 
 Of course, you may adapt it at your own needs, see below.
 
-## default configuration file (zfs_defaults.yml, dev)
+## default configuration file (zfs_defaults.yml, exemples)
 
 ```
 %YAML 1.1
 ---
 # crontab/ssh user
-user: "root"
+user: 'root'
 # will be use for crontab creation date (empty)
-date: ""
+date: ''
 # same as __version__ in *.py
-version: "0.5"
+version: '0.6'
 path:
   # main tools location
-  tools: "/root/tools/zfs_actions.py"
+  tools: '/root/zfstoolbox/'
+  # main script
+  cmd: 'zfs_actions.py'
   # path to config dir (trailing / is mandatory)
   # home of zfs-defaults.yml
-  conf: "/root/conf/"
+  conf: '/root/zfstoolbox/conf/'
+  # for crontab, we need bash as shell, 'source' (for venv) beeing a builtin
+  defaultshell: 'SHELL=/usr/bin/bash'
   # path to crontab dir (trailing / is mandatory)
-  cron: "/etc/cron.d/"
+  cron: '/etc/cron.d/'
   # path to log dir (trailing / is mandatory)
-  log: "/var/log/"
+  log: '/var/log/'
   # path for zfs binary (autodetected?)
-  zfs: ""
+  zfs: ''
 ```
 
 Be sure to modify the **CONFIGFILE** global variable in ``manage_conf.py`` and ``zfs_actions.py``, so that both scripts can read this configuration file.
@@ -80,9 +83,38 @@ execo >= 2.6.2
 PyYAML >= 5.1.2
 ```
 
-``python3 -m pip install execo PyYAML``
-
 Obviously zfs, and ssh, if you do external replicas.
+
+## VirtualEnv
+
+As of Debian 12 'Bookworm', you need a virtual python environment.
+
+### Maximum Debian
+
+```
+apt-get install python3-venv python3-yaml
+python3 -m venv zfstoolbox --system-site-packages
+cd zfstoolbox/ && source zfstoolbox/bin/activate
+python3 -m pip install execo
+```
+
+### Maximum autonomous
+
+```
+apt-get install python3-venv
+python3 -m venv zfstoolbox
+cd zfstoolbox/ && source zfstoolbox/bin/activate
+python3 -m pip install execo PyYAML
+```
+
+### Entering your virtual env
+
+copy files show in example below, in the newly created hierarchy, with correct chmod.
+
+Then enter your virtualenv, ``cd zfstoolbox/ && source bin/activate``, and start to work.
+
+You can exit your virtualenv with: ``deactivate``.
+
 
 ## Create configuration files
 
