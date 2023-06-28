@@ -15,8 +15,8 @@ path:
   # path to config dir (trailing / is mandatory)
   # and home of zfs_defaults.yml (egg or chicken paradox)
   conf: '/tmp/conf/'
-  # path to venv, should be same as 'main tools location' <- necessary?
-  venv: '/tmp/tools/'
+  # for crontab, we need bash as shell, 'source' (for venv) beeing a builtin
+  defaultshell: 'SHELL=/usr/bin/bash'
   # path to crontab dir (trailing / is mandatory)
   cron: '/tmp/cron.d/'
   # path to log dir (trailing / is mandatory)

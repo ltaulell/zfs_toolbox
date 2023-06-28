@@ -2,7 +2,7 @@
 + python3-venv
 = venv>=3.9 ? <- not in requirements.txt, distro level
 
-prior to install zfstoolbox:
+prior to install zfstoolbox -> README.md
 
 * Max debian
 
@@ -24,12 +24,13 @@ TODO zfs_defaults.yml
 + version = 0.6
 + dict{} path:tools == only path
 + dict{} path:cmd == only cmd (zfs_actions.py)
-+ dict{} path:venv == only path (same as tools by default?)
++ dict{} path:venv == only path (same as tools by default?) <- inutile
 
 TODO manage_conf.py (apply changes)
 + version = 0.6
-+ l:324 # deb12: introduce venv
++ ~l:324 # deb12: introduce venv
 ? GLOBAL_CONFIG['path']['tools']
++ defaultshell (for source)
 
 TODO zfs_actions.py (apply changes)
 + version = 0.6

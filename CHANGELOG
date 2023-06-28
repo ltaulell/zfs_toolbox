@@ -9,7 +9,9 @@ See existing branches
 
     Debian 12 is switching to full venv for unpackaged python3 tools:
         new YAML default configuration
-        no changes on volume's configurations
+            tools path and cmd are separated
+            new defaultshell, for crontab
+        no change on volume's configurations
 
 ## v0.5b (no tag)
 

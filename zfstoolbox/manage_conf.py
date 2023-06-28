@@ -322,15 +322,18 @@ def prepare_and_save_crontab():
 
     # save crontab
     # deb12: introduce venv
+    venv = 'cd GLOBAL_CONFIG['path']['tools'] && source bin/activate &&'
     binpy = ''.join(GLOBAL_CONFIG['path']['tools'],GLOBAL_CONFIG['path']['cmd'])
     ymlconf = GLOBAL_CONFIG['path']['tosave']
+    global_cmd = ' '.join('(', venv, binpy, '-c', ymlconf, ')')
+
     if not script.arguments['mail']:
         cronlist = (minute, hour, dom, month, dow, GLOBAL_CONFIG['user'],
-                    binpy, '-c', ymlconf, '>/dev/null')
+                    global_cmd, '>/dev/null')
         mailto = 'MAILTO=root'
     else:
         cronlist = (minute, hour, dom, month, dow, GLOBAL_CONFIG['user'],
-                    binpy, '-c', ymlconf)
+                    global_cmd)
         mailto = 'MAILTO=' + str(script.arguments['mail'])
 
     crontab = (' '.join(cronlist))
@@ -342,7 +345,8 @@ def prepare_and_save_crontab():
     verifcron = zfs_common.query_yesno(question)
     if verifcron == 1:
         defaultpath = 'PATH=/sbin:/bin:/usr/sbin:/usr/bin'
-        fichier = ['# ' + GLOBAL_CONFIG['date'], mailto, defaultpath, crontab, '']
+        fichier = ['# ' + GLOBAL_CONFIG['date'], GLOBAL_CONFIG['defaultshell'],
+                   mailto, defaultpath, crontab, '']
         zfs_common.verify_or_create_dir(cronfichier)
         zfs_common.save_crontab(cronfichier, fichier)
         execo.log.logger.info(cronfichier + ' saved \n')
