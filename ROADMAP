@@ -34,7 +34,7 @@ rolling replicas (production ready)
 
 complete documentation
 
-### version 0.5 (ongoing developement)
+### version 0.5
 
 refactor code
     one script 'zfs_actions.py' replace 'zfs-snapshot.py' and 'zfs-replica.py'
@@ -45,6 +45,14 @@ refactor code
     logrotate (see doc)
 
 refactor documentation
+
+### version 0.6
+
+Debian 12 'Bookworm' introduce mandatory VirtualEnv for non packaged python
+
+### developement version (0.6+)
+
+See TODO, see branches, if any...
 
 ## version 1.0
 

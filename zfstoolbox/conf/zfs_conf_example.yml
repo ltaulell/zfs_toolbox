@@ -7,7 +7,7 @@ general:
   log: 'yes'
   logfile: '/var/log/zfs_actions.log'
   debug: 'yes'
-  version: '0.5'
+  version: '0.6'
 retention: '7'
 # actual zfs volume
 volume: 'baie1/data/photochim'

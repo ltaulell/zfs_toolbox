@@ -6,13 +6,17 @@
 user: 'root'
 # will be use for crontab creation date (empty)
 date: ''
-version: '0.5'
+version: '0.6'
 path:
-  # main tools location
-  tools: '/tmp/tools/zfs_actions.py'
+  # main tools location (trailing / is mandatory)
+  tools: '/tmp/tools/'
+  # main script
+  cmd: 'zfs_actions.py'
   # path to config dir (trailing / is mandatory)
-  # and home of zfs_defaults.yml (egg or chicken?)
+  # and home of zfs_defaults.yml (egg or chicken paradox)
   conf: '/tmp/conf/'
+  # for crontab, we need bash as shell, 'source' (for venv) beeing a builtin
+  defaultshell: 'SHELL=/usr/bin/bash'
   # path to crontab dir (trailing / is mandatory)
   cron: '/tmp/cron.d/'
   # path to log dir (trailing / is mandatory)

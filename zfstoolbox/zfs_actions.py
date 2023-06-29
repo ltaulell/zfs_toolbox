@@ -25,7 +25,7 @@ import execo
 
 import zfs_common
 
-__version__ = "0.5"
+__version__ = "0.6"
 __author__ = "See AUTHORS"
 __copyright__ = "Copyright 2018, PSMN, ENS de Lyon"
 __credits__ = "See CREDITS"
