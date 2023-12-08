@@ -1,6 +1,11 @@
 #!/bin/bash
 #PSMN: $Id: gen-multi-md3060x1.sh 582 2013-09-16 10:45:40Z ltaulell $
 
+#
+# need sas2ircu on host
+# See http://hwraid.le-vert.net/ for sas2ircu packages
+#
+
 cpt=0
 for line in $(sas2ircu 0 DISPLAY | grep GUID | cut -d ":" -f2 | grep -v -e "N/A")
   do

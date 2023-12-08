@@ -1,6 +1,11 @@
 #!/bin/bash
 #PSMN: $Id: gen-multi-mdx2.sh 3030 2020-11-04 14:09:13Z ltaulell $
 
+#
+# need sas2ircu on host
+# See http://hwraid.le-vert.net/ for sas2ircu packages
+#
+
 #set -x
 
 DISKS=$(sas2ircu 0 DISPLAY | grep GUID | cut -d ":" -f2 | grep -v -e "N/A")

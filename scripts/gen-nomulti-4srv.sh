@@ -6,7 +6,7 @@
 #
 # use /dev/disk/by-id, /dev/disk/by-path
 # smartctl -a /dev/sd?
-# for i in a b c d e f g h i j k l m n o p q r s t u v w x; do smartctl -a /dev/sd$i | grep -e "Logical Unit id" ; done
+# for i in {a..x} ; do smartctl -a /dev/sd$i | grep -e "Logical Unit id" ; done
 #
 #DISKS=$(multipath -v2 -ll | egrep -v "ST4" | grep -e "WD4" | cut -d" " -f1)
 # pattern "MK" = 300G (front)

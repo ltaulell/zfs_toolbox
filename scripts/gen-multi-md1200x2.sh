@@ -1,6 +1,12 @@
 #!/bin/bash
 #PSMN: $Id: gen-multi-md1200x2.sh 560 2013-09-06 07:21:18Z ltaulell $
 
+#
+# need sas2ircu on host
+# See http://hwraid.le-vert.net/ for sas2ircu packages
+#
+
+
 #set -x
 
 DISKS=$(sas2ircu 0 DISPLAY | grep GUID | cut -d ":" -f2 | grep -v -e "N/A")
