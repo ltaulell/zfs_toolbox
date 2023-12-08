@@ -37,7 +37,7 @@ In active production at PSMN and UMPA lab.
     │   ├── snapshot-data-example.yml   (see zfs_conf_example.yml)
     │   └── zfs_defaults.yml
     ├── manage_conf.py
-    ├── zfs_actions.py                  (need exec bit)
+    ├── zfs_actions.py                  (need user exec bit)
     └── zfs_common.py
 
 ```
@@ -109,7 +109,7 @@ python3 -m pip install execo PyYAML
 
 ### Entering your virtual env
 
-Copy files shown in example above, in the newly created hierarchy, with correct chmod.
+Copy files shown in example above, in the newly created hierarchy, with correct chmod (user r/w, user exec bit). Make sure your user can read/write into conf, cron and log directories. See ``zfs_defaults.yml``.
 
 Then enter your virtualenv, ``cd zfstoolbox/ && source bin/activate``, and start to work.
 
