@@ -315,8 +315,7 @@ You may want to rotate your log, using logrotate. Create a file named
         copytruncate
 }
 ```
-
-This example keep one year of logs, rotated monthly.
+Where `$CREATION_DATE` can be any form of readable date (as in `date +%Y-%m-%dT%H:%M`). This example keep one year of logs, rotated monthly.
 
   * debug
 
