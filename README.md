@@ -326,17 +326,7 @@ automaticaly for a long period of time.
 
 An ansible task, with templates, is available. See `ansible` directory.
 
-
-  * bump version (prior to v0.4) to 0.4
-
-``` bash
-grep version conf/*.yml
-sed -i '/version/ s/0.2/0.4/' conf/*.yml
-```
-
-  * bump version (prior to 0.3) to 0.5
-
-``` bash
-update_to_v0.5.py -f path/to/file.yml
-```
+  * Bump version
+  
+See ``scripts/README.md``.
 
