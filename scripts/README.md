@@ -23,6 +23,7 @@ modify cron files:
 cd /path/to/cron.d/
 sed -i 's/ot /ot ( cd \/root\/zfstoolbox\/ \&\& source bin\/activate \&\& /' snapshot-*
 sed -i 's/yml/yml \)/' snapshot-*
+sed -i '2i SHELL=/usr/bin/bash' snapshot-*
 ```
 You may have to change your ``conf/`` and ``zfstoolbox/`` path, according to your own configuration.
 
