@@ -118,9 +118,9 @@ def full_replication(serveur, localzname, tgtzname, reptype=None, archtype=None)
         localsnap = get_local_snapshot(localzname, status='latest')
 
     if reptype == 'complete':
-        send_cmd = 'send -p'
+        send_cmd = 'send -peL'
     else:  # reptype is simple or None
-        send_cmd = 'send'
+        send_cmd = 'send -eL'
 
     local_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'], send_cmd, localsnap])
     execo.log.logger.debug(local_cmd)
@@ -259,7 +259,7 @@ def incremental_replication(serveur, localzname, tgtzname):
     # send diff 'latest on target' vs 'latest on source'
     if latest_tgt_date < latest_src_date:
 
-        lcl_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'], 'send -I',
+        lcl_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'], 'send -IeL',
                             latest_tmp_snap, latestsnap[0]])
 
         tgt_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'], 'receive',
@@ -376,8 +376,10 @@ if __name__ == '__main__':
 
         if replication == 'full':
             # first, create target dataset on target host
+            # replica target volume should'nt be mounted
             target_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'],
-                                   'create -p', target_name])
+                                   'create -p', '-o mountpoint=none -u',
+                                   target_name])
             execo.log.logger.debug(srv + ': ' + target_cmd)
             zfs_common.execute_zfs(target_cmd, host=srv)
 
