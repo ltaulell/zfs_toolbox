@@ -25,7 +25,7 @@ This is Work In Progress:
 
 Successfully tested from Debian 9 to Debian 12.
 
-In active production at PSMN and UMPA lab.
+In **active production** at [PSMN HPC platform](https://www.ens-lyon.fr/PSMN/) and [UMPA lab](https://www.umpa.ens-lyon.fr/).
 
 ## Default directories and files (example)
 
