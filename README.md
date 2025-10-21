@@ -94,7 +94,7 @@ As of Debian 12 'Bookworm', you need a virtual python environment:
 ```
 apt-get install python3-venv python3-yaml
 python3 -m venv zfstoolbox --system-site-packages
-cd zfstoolbox/ && source zfstoolbox/bin/activate
+cd zfstoolbox/ && source bin/activate
 python3 -m pip install execo
 ```
 
@@ -103,7 +103,7 @@ python3 -m pip install execo
 ```
 apt-get install python3-venv
 python3 -m venv zfstoolbox
-cd zfstoolbox/ && source zfstoolbox/bin/activate
+cd zfstoolbox/ && source bin/activate
 python3 -m pip install execo PyYAML
 ```
 
