@@ -27,7 +27,7 @@ import logging
 
 import execo
 
-import zfs_common
+from . import zfs_common
 
 __version__ = "0.6"
 __author__ = "See AUTHORS"

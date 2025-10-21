@@ -7,13 +7,14 @@
 """
     Common functions for manage_conf.py and zfs_actions.py
 
-    TODO/FIXME: reclasser par ordre alphabétique
+    TODO/FIXME:
 """
 
 import os
 import sys
-import distutils.spawn
-import distutils.util
+#import distutils.spawn
+#import distutils.util
+from shutil import which
 import datetime
 import yaml
 
@@ -27,6 +28,19 @@ __license__ = "BSD-2"
 __maintainer__ = "Loïs Taulelle"
 __email__ = "None"
 __status__ = "Production"
+
+
+def strtobool(s) -> bool:
+    """
+    distutils.util.strtobool(val)
+    Convert a string representation of truth to true (1) or false (0).
+
+    True values are y, yes, t, true, on and 1; false values are n, no, f, false, off and 0. Raises ValueError if val is anything else.
+    """
+
+    if s in {'y','yes','t','true','on',1}: return True
+    if s in {'n','no','f','false','off',0}: return False
+    raise ValueError('bad input',s)
 
 
 def erase_file(fichier):
@@ -152,7 +166,8 @@ def query_yesno(question):
     print('\n' + question + ' [y/n]?')
     while True:
         try:
-            return distutils.util.strtobool(input().lower())
+            #return distutils.util.strtobool(input().lower())
+            return strtobool(input().lower())
         except ValueError:
             print('Please reply "y" or "n".')
 
@@ -198,7 +213,8 @@ def verif_exec(binaire):
         return the complete path of 'binaire', if found in $PATH
     """
     try:
-        cmd_exist = distutils.spawn.find_executable(binaire)
+        # cmd_exist = distutils.spawn.find_executable(binaire)
+        cmd_exist = which(binaire)
         if cmd_exist is None:
             execo.log.logger.warning('Command not found: ' + binaire)
         else:

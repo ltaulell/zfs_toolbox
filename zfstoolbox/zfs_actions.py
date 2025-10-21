@@ -13,7 +13,7 @@
         * replicate snapshot(s), full or incremental
         * list replica(s), if replica is oldest than retention, erase it.
 
-    TODO/FIXME: reclasser par ordre alphabétique
+    TODO/FIXME:
 """
 
 import sys
@@ -23,7 +23,7 @@ import logging
 
 import execo
 
-import zfs_common
+from . import zfs_common
 
 __version__ = "0.6"
 __author__ = "See AUTHORS"
