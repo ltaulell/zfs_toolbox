@@ -23,7 +23,7 @@ This is Work In Progress:
  * v0.6 tested (full git)
  * current dev
 
-Successfully tested from Debian 9 to Debian 13.
+Successfully tested from Debian 9 to Debian 13. See ``UPGRADES.md``.
 
 In **active production** at [PSMN HPC platform](https://www.ens-lyon.fr/PSMN/) and [UMPA lab](https://www.umpa.ens-lyon.fr/).
 
