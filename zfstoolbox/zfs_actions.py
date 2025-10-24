@@ -35,7 +35,7 @@ __email__ = "None"
 __status__ = "Production"
 
 # global configuration file
-CONFIGFILE = '/root/conf/zfs_defaults.yml'
+CONFIGFILE = '/root/zfstoolbox/conf/zfs_defaults.yml'
 # CONFIGFILE = 'zfs_defaults.yml'
 
 
