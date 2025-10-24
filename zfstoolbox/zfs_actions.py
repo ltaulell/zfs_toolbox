@@ -259,7 +259,7 @@ def incremental_replication(serveur, localzname, tgtzname):
     # send diff 'latest on target' vs 'latest on source'
     if latest_tgt_date < latest_src_date:
 
-        lcl_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'], 'send -IeL',
+        lcl_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'], 'send -eL -I',
                             latest_tmp_snap, latestsnap[0]])
 
         tgt_cmd = ' '.join([GLOBAL_CONFIG['path']['zfs'], 'receive',
